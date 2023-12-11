@@ -12,19 +12,23 @@
 
     <button id="titleButton" onclick="ChangeText()">Beni Ters Çevir</button>
 
-    <button id="inputButton" onclick="InputChanged">İnput Değiştir</button>
+    <button id="inputButton" onclick="InputChanged()">İnput Değiştir</button>
 
 
     <form action="">
         <input type="text" onchange="InputChanged()">
+
         <input id="textInput" type="text" placeholder="Beni Değiştir">
+
+        <input id="writeText" oninput="UpdateText()" type="text" placeholder="Önce bana yaz">
+        <input id ="sameText" type="text" placeholder="Aynısını bana yaz">
     </form>
 
 
 
     <script>
         function InputChanged(){
-            var inputText = document.querySelector("textInput")
+            var inputText = document.querySelector("#textInput")
             var titleText = inputText.value;
 
             var ttArray = titleText.split("");
@@ -43,11 +47,17 @@
 
         function ChangeText() {
             var buttonText = document.querySelector("#titleButton");
-            var titText = buttonText.innerText;
+            var titleText = buttonText.innerText;
 
-            var tArray = titText.split("");
-            tArray = tArray.reverse();
-            buttonText.innerText = tArray.join("");
+            var ttArray = titleText.split("");
+            ttArray = ttArray.reverse();
+            buttonText.innerText = ttArray.join("");
+        }
+
+        function UpdateText () {
+            var input1Value = document.querySelector("#writeText").value;
+            document.querySelector("#sameText").value = input1Value; 
+
         }
     </script>
 </body>
