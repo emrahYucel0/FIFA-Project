@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body style="display: flex; justify-content: center;">
+
+
+    <button onclick="ChangeTitle()">Başlık Değiştir</button>
+
+    <button id="titleButton" onclick="ChangeText()">Beni Ters Çevir</button>
+
+    <button id="inputButton" onclick="InputChanged">İnput Değiştir</button>
+
+
+    <form action="">
+        <input type="text" onchange="InputChanged()">
+        <input id="textInput" type="text" placeholder="Beni Değiştir">
+    </form>
+
+
+
+    <script>
+        function InputChanged(){
+            var inputText = document.querySelector("textInput")
+            var titleText = inputText.value;
+
+            var ttArray = titleText.split("");
+            ttArray = ttArray.reverse();
+            inputText.value = ttArray.join("")
+        }
+
+        function ChangeTitle(){
+            var titleText = document.title;
+
+            var ttArray = titleText.split("");
+            ttArray = ttArray.reverse();
+            document.title = ttArray.join("")
+
+        }
+
+        function ChangeText() {
+            var buttonText = document.querySelector("#titleButton");
+            var titText = buttonText.innerText;
+
+            var tArray = titText.split("");
+            tArray = tArray.reverse();
+            buttonText.innerText = tArray.join("");
+        }
+    </script>
+</body>
+</html>
