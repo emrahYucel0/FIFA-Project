@@ -29,9 +29,30 @@
             <a href="#">INSIDE FIFA</a>
 
             <div class="menu-right">
-                <a href="#"><img src="./assets/search.png" alt="search icon"></a>
-                <a href="#"><img src="./assets/internet.png" alt="language icon"></a>
-                <a href="#"><img src="./assets/user.png" alt="user icon"></a>
+                <div class="pos">
+                    <a href="#"><img src="./assets/icons8-search.svg" alt="search icon"></a>
+                </div>
+                
+                <div class="pos">
+                    <a id="lang-icon"  href="#"><img  src="./assets/internet.png" alt="language icon"></a>
+                    <ul class="lang-menu">
+                        <li>ENGLISH</li>
+                        <li>FRANÇAIS</li>
+                        <li>DEUTSCH</li>
+                        <li>ESPANOL</li>
+                        <li>PORTAGUES</li>
+                        <li>ITALIANO</li>
+                        <li>INDONESIA</li>
+                        <li>한국인</li>
+                        <li>日本語</li>
+                        <li>عربي</li>
+                    </ul>
+                </div>
+                
+                <div class="pos">
+                    <a href="#"><img src="./assets/user.png" alt="user icon"></a>
+                </div>
+                
             </div>
         </div>
 
@@ -54,13 +75,52 @@
         </div>
     </a>
 <script>
-    
+        /*
         let changeTittle = document.querySelector("#tickets");
         let pageTittle = document.querySelector("#pageTittle")
         changeTittle.addEventListener("click",myFunction)
         
         function myFunction(){
             pageTittle.textContent = "BİLET";
+        }
+        */
+
+        /* Tıklayınca Görünür Olma
+
+        function showElement() {
+            var element = document.querySelector(".lang-menu")
+            element.style.visibility = "visible"; 
+        }
+         */
+
+         /* Tıklayınca görünür / görünmez olma
+
+        function toggleElement () {
+            var element =document.querySelector(".lang-menu");
+
+            if (element.style.visibility === "hidden"){
+                element.style.visibility = "visible"
+            } else {
+                element.style.visibility = "hidden"
+            }
+
+        }
+        */
+
+        var button = document.querySelector("#lang-icon");
+        var element = document.querySelector(".lang-menu");
+
+        button.addEventListener('click', function(event) {
+        event.stopPropagation(); // Bu satır, tıklamayı iletmeyi durdurur, böylece document.click olayı tetiklenmez
+        toggleElement();
+        });
+
+        document.addEventListener('click', function(event) {
+        element.style.visibility = 'hidden';
+        });
+
+        function toggleElement() {
+            element.style.visibility = (element.style.visibility === 'hidden' || element.style.visibility === '') ? 'visible' : 'hidden';
         }
     
 </script>
