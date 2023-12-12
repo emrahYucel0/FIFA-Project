@@ -15,14 +15,23 @@
     <button id="inputButton" onclick="InputChanged()">İnput Değiştir</button>
 
 
-    <form action="">
+    <form action="https://www.google.com" onsubmit="Stop(event)">
         <input type="text" onchange="InputChanged()">
 
         <input id="textInput" type="text" placeholder="Beni Değiştir">
 
         <input id="writeText" oninput="UpdateText()" type="text" placeholder="Önce bana yaz">
         <input id ="sameText" type="text" placeholder="Aynısını bana yaz">
+
+        <input id="input1" onkeyup="ReverseText(this.value)" type="text" required maxlength="11" placeholder="Ben Input1 bana da yaz">
+        <input id ="input2" type="text" placeholder="Input1 ters çevir">
+
+        <input type="submit" value="TAMAM">
     </form>
+
+    <button id="add-button" onclick="AddButton()">Düğme Ekle</button>
+
+    <button onclick="RemoveButton(this)">Silinecek Düğme</button>
 
 
 
@@ -59,6 +68,45 @@
             document.querySelector("#sameText").value = input1Value; 
 
         }
+
+        function ReverseText (titleText) {
+            var entryInput = document.getElementById("input2")
+            var ttArray = titleText.split("");
+
+            ttArray = ttArray.reverse();
+            entryInput.value = ttArray.join("");
+        }
+
+        // FORM INPUT validasyon "pata" yazınca kabul etmeme durumu
+        function Stop(e) {
+            var entryInput = document.getElementById("input1");
+
+            if (entryInput.value == "pata") {
+                e.preventDefault();
+            }
+        }
+
+        // Element ekleme
+        function AddButton() {
+            var button_ = document.createElement("button");
+            button_.innerText = "Selam";
+            button_.setAttribute("onclick", "AddButton()")
+            document.body.appendChild(button_);
+            // düğmeye bastıktan sonra aktifliği kaybolur
+            document.querySelector("#add-button").setAttribute("disabled","true");
+            
+        }
+
+        function RemoveButton(orgButton) {
+            var button_2 = document.createElement("button");
+            buton_2.innerText = "Yine ben";
+            document.body.appendChild(button_2);
+            button_2.setAttribute("onclick", "RemoveButton(this)");
+            orgButton.remove();
+        }
+
+
+        
     </script>
 </body>
 </html>
