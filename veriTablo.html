@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        button {
+            background-color: purple;
+            width: 50px;
+            height: 50px;
+            color: aliceblue;
+            border-radius: 50%;
+            border: 1px solid purple;
+            position: relative;
+            left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="ButtonClick()">Data Çek</button>
+    
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>UserId</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function FillTable(data) {
+            var tableBody = $("#dataTable tbody");
+            tableBody.empty(); // Clear existing rows
+
+            for (var i = 0; i < data.length; i++) {
+                var row = $("<tr>");
+                row.append($("<td>").text(data[i].userId));
+                row.append($("<td>").text(data[i].id));
+                row.append($("<td>").text(data[i].title));
+                row.append($("<td>").text(data[i].completed ? "Yes" : "No"));
+                tableBody.append(row);
+            }
+        }
+
+        function ButtonClick() {
+            $.get("https://jsonplaceholder.typicode.com/todos", FillTable, "json");
+        }
+    </script>
+</body>
+</html>
